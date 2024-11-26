@@ -23,11 +23,8 @@ This app performs webscraping of data from dakar-auto over multiples pages. And 
 options = webdriver.ChromeOptions() 
 # set the options to use Chrome in headless mode (used for running the script in the background)
 options.add_argument("--headless=new") 
-options.add_argument("--disable-gpu")  # Disable GPU (useful for headless)
-options.add_argument("--no-sandbox")  # Required for some Linux environments
-options.add_argument("--disable-dev-shm-usage")  # Overcome limited resource issues
 # initialize an instance of the Chrome driver (browser) in headless mode
-driver = webdriver.Chrome(options=options)
+driver = webdriver.Chrome(ChromeDriverManager().install())
 
 def scrape_all(pages_nb, link):
     # generalize the scraping over all containers
