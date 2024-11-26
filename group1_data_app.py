@@ -1,5 +1,5 @@
 # import packages
-from bs4 import BeautifulSoup as bs
+#from bs4 import BeautifulSoup as bs
 from selenium import webdriver 
 from selenium.webdriver.common.by import By 
 import streamlit as st
