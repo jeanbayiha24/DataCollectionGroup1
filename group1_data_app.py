@@ -33,18 +33,6 @@ st.markdown("""
     div.stButton {text-align:center}
     </style>""", unsafe_allow_html=True)
 
-
-if st.button("Computer data"):
-    if options=="Scrape data using BeautifulSoup":
-        df = pd.DataFrame()
-        df = scrape_all_bs(pages_indexes, url_ordis)
-        
-        st.subheader('Display data dimension')
-        st.write('Data dimension: ' + str(df.shape[0]) + ' rows and ' + str(df.shape[1]) + ' columns.')
-        st.dataframe(df)
-
-
-
 def scrape_all_bs(pages_nb, link):
     # Generalize the scraping over all pages
     data = []
@@ -93,6 +81,19 @@ def scrape_all_bs(pages_nb, link):
     # Convert collected data to a DataFrame
     df = pd.DataFrame(data)
     return df
+
+if st.button("Computer data"):
+    if options=="Scrape data using BeautifulSoup":
+        df = pd.DataFrame()
+        df = scrape_all_bs(pages_indexes, url_ordis)
+        
+        st.subheader('Display data dimension')
+        st.write('Data dimension: ' + str(df.shape[0]) + ' rows and ' + str(df.shape[1]) + ' columns.')
+        st.dataframe(df)
+
+
+
+
 
 
 
