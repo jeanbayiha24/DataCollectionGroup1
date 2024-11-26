@@ -1,9 +1,10 @@
 # import packages
-#from bs4 import BeautifulSoup as bs
-from selenium import webdriver 
-from selenium.webdriver.common.by import By 
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.chrome.service import Service
+from bs4 import BeautifulSoup as bs
+from requests import get
+#from selenium import webdriver 
+#from selenium.webdriver.common.by import By 
+#from webdriver_manager.chrome import ChromeDriverManager
+#from selenium.webdriver.chrome.service import Service
 import streamlit as st
 import pandas as pd
 
@@ -19,50 +20,58 @@ This app performs webscraping of data from dakar-auto over multiples pages. And 
 
 
 
-#Function for scraping data
-# instantiate a Chrome options object
-options = webdriver.ChromeOptions() 
-# set the options to use Chrome in headless mode (used for running the script in the background)
-options.add_argument("--headless=new") 
-options.add_argument("--no-sandbox")
-options.add_argument("--disable-dev-shm-usage")
-options.binary_location = "/usr/bin/google-chrome"
-# initialize an instance of the Chrome driver (browser) in headless mode
-driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
-def scrape_all(pages_nb, link):
-    # generalize the scraping over all containers
+
+
+def scrape_all_bs(pages_nb, link):
+    # Generalize the scraping over all pages
     data = []
-    df1 = pd.DataFrame()
-    for page in range(1,pages_nb+1):
-        url = link+f'?page={page}' 
-        driver.get(url)
-        # find containers
-        containers = driver.find_elements(By.CSS_SELECTOR, "[class= 'listing-card__content 1']")
-        images = driver.find_elements(By.CSS_SELECTOR, "[class='listing-card__image__resource vh-img']")
-        page_data = []  # Temporary list to hold data for the current page
-        for container, img in zip(containers, images) :
-            try:
-                # get the details
-                details = container.find_element(By.CSS_SELECTOR, "[class='listing-card__header__title']").text
-                # get the price
-                price = container.find_element(By.CSS_SELECTOR, "[class='listing-card__price__value 1']").text#.replace('GH₵ ', '').replace(',','')
-                # get the location
-                address = container.find_element(By.CSS_SELECTOR, "[class='listing-card__header__location']").text
-                tags = container.find_element(By.CSS_SELECTOR, "[class='listing-card__header__tags']")
-                brand = tags.find_elements(By.TAG_NAME, "span")[1].text
-                # get the condition
-                condition = tags.find_elements(By.TAG_NAME, "span")[0].text
-                img_link = img.get_attribute('src')
-                page_data.append({'details':details, 'brand':brand, 'price':price, 'address':address, 'condition': condition, 'link_image':img_link})
-            except Exception as e:
-                print(f"Error scraping a container: {e}")
-                continue  # Skip this container in case of an error
-        # Add current page data to the main list
-        data.extend(page_data)
-    df1 = pd.DataFrame(data)
     
-    return df1
+    for page in range(1, pages_nb + 1):
+        url = f"{link}?page={page}"
+        res = get(url)
+        
+        soup = bs(res.text, 'html.parser')
+            
+        # Find all containers for listings
+        containers = soup.find_all("div", class_="listing-card__content")
+            
+        for container in containers:
+            try:
+                # Extract details
+                details = container.find("div", class_="listing-card__header__title").text.strip().replace('\n','')
+              
+                # Extract price
+                price = container.find("span", class_="listing-card__price__value").text.strip()
+                    
+                # Extract address
+                address = container.find("div", class_="listing-card__header__location").text.strip().replace('\n','')
+                    
+                # Extract tags (brand and condition)
+                tags = container.find("div", class_="listing-card__header__tags").find_all("span")
+                condition = tags[0].text.strip()
+                brand = tags[-1].text.strip()
+                    
+                # Extract image link
+                img = container.find_previous("img", class_="listing-card__image__resource vh-img")
+                img_link = img['src']
+                    
+                # Append extracted data
+                data.append({'details': details,
+                        'brand': brand,
+                        'price': price,
+                        'address': address,
+                        'condition': condition,
+                        'link_image': img_link
+                    })
+                
+            except Exception as e:
+                pass  # Skip this container in case of an error
+    
+    # Convert collected data to a DataFrame
+    df = pd.DataFrame(data)
+    return df
+
 
 
 
