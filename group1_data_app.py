@@ -23,12 +23,19 @@ st.sidebar.markdown(
 pages_indexes = st.sidebar.selectbox("Pages indexes", list(range(1, 250)), index=2)
 options = st.sidebar.selectbox("Options", ["Scrape data using BeautifulSoup","Download scraped data", "Dashboard of the data", "Fill the form"], index=1)
 
+#url of the websites
+url_ordis = "https://www.expat-dakar.com/ordinateurs"
+url_phones = "https://www.expat-dakar.com/telephones"
+url_cinema = "https://www.expat-dakar.com/tv-home-cinema"
+
 st.markdown("""
     <style>
     div.stButton {text-align:center}
     </style>""", unsafe_allow_html=True)
 
-#if options=="Scrape data using BeautifulSoup":
+if st.button("Computer data"):
+    if options=="Scrape data using BeautifulSoup":
+        scrape_all_bs(pages_indexes, url_ordis)
     
 
 
