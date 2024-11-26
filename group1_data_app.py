@@ -41,10 +41,17 @@ def scrape_all_bs(pages_nb, link):
         url = f"{link}?page={page}"
         res = get(url)
         
+        if res.status_code != 200:
+            st.write(f"Erreur sur la page {page}: Code HTTP {res.status_code}")
+            continue
+        
         soup = bs(res.text, 'html.parser')
             
         # Find all containers for listings
         containers = soup.find_all("div", class_="listing-card__content")
+
+        if not containers:
+            st.write(f"Aucun conteneur trouvé sur la page {page}")
             
         for container in containers:
             try:
@@ -85,7 +92,7 @@ def scrape_all_bs(pages_nb, link):
 if st.button("Computer data"):
     if options=="Scrape data using BeautifulSoup":
         df = scrape_all_bs(pages_indexes, url_ordis)
-        
+        st.write(""+pages_indexes+url_ordis)
         st.subheader('Display data dimension')
         st.write('Data dimension: ' + str(df.shape[0]) + ' rows and ' + str(df.shape[1]) + ' columns.')
         st.dataframe(df)
