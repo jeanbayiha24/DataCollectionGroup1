@@ -24,7 +24,7 @@ options = webdriver.ChromeOptions()
 # set the options to use Chrome in headless mode (used for running the script in the background)
 options.add_argument("--headless=new") 
 # initialize an instance of the Chrome driver (browser) in headless mode
-driver = webdriver.Chrome(ChromeDriverManager().install())
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
 def scrape_all(pages_nb, link):
     # generalize the scraping over all containers
