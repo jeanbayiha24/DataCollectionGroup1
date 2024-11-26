@@ -84,7 +84,7 @@ def scrape_all_bs(pages_nb, link):
                 
             except Exception as e:
                 pass  # Skip this container in case of an error
-    
+        time.sleep(2)  # Wait 2 seconds before the next request
     # Convert collected data to a DataFrame
     df = pd.DataFrame(data)
     return df
