@@ -18,7 +18,25 @@ This app performs webscraping of data from dakar-auto over multiples pages. And 
 * **Data source:** [Expat-Dakar-ordinateurs](https://www.expat-dakar.com/ordinateurs) — [Expat-Dakar-telephones](https://www.expat-dakar.com/telephones) - [Expat-Dakar-cinema](https://www.expat-dakar.com/tv-home-cinema).
 """)
 
+st.sidebar.markdown(
+    "<h2 style='color: #ffffff; background-color: #5a9; padding: 10px; text-align: center;'>User Input Features</h2>",
+    unsafe_allow_html=True,
+)
 
+# Add options to the lateral bar
+pages_indexes = st.sidebar.selectbox("Pages indexes", list(range(1, 250)), index=2)
+options = st.sidebar.selectbox("Options", ["Scrape data using BeautifulSoup","Download scraped data", "Dashboard of the data", "Fill the form"], index=1)
+
+#st.write(
+#    f"""
+#    <p style='font-size: 18px; color: black;'>You have selected:</p>
+#    <ul>
+#        <li>Pages indexes: <b>{pages_indexes}</b></li>
+#        <li>Scraping option: <b>{options}</b></li>
+#    </ul>
+#    """,
+#    unsafe_allow_html=True,
+#)
 
 
 
