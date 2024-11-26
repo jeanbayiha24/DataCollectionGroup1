@@ -27,16 +27,13 @@ st.sidebar.markdown(
 pages_indexes = st.sidebar.selectbox("Pages indexes", list(range(1, 250)), index=2)
 options = st.sidebar.selectbox("Options", ["Scrape data using BeautifulSoup","Download scraped data", "Dashboard of the data", "Fill the form"], index=1)
 
-#st.write(
-#    f"""
-#    <p style='font-size: 18px; color: black;'>You have selected:</p>
-#    <ul>
-#        <li>Pages indexes: <b>{pages_indexes}</b></li>
-#        <li>Scraping option: <b>{options}</b></li>
-#    </ul>
-#    """,
-#    unsafe_allow_html=True,
-#)
+st.markdown("""
+    <style>
+    div.stButton {text-align:center}
+    </style>""", unsafe_allow_html=True)
+
+#if options=="Scrape data using BeautifulSoup":
+    
 
 
 
