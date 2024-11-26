@@ -92,7 +92,7 @@ def scrape_all_bs(pages_nb, link):
 if st.button("Computer data"):
     if options=="Scrape data using BeautifulSoup":
         df = scrape_all_bs(pages_indexes, url_ordis)
-        st.write(""+pages_indexes+url_ordis)
+        
         st.subheader('Display data dimension')
         st.write('Data dimension: ' + str(df.shape[0]) + ' rows and ' + str(df.shape[1]) + ' columns.')
         st.dataframe(df)
