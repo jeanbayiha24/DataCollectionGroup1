@@ -9,4 +9,3 @@ seaborn
 selenium
 pybase64
 webdriver_manager
-urllib
