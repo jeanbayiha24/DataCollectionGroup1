@@ -126,14 +126,25 @@ if options=="Scrape data using BeautifulSoup":
         st.dataframe(df)
 
 
-
-
 # load the data
 elif options == "Download scraped data":
     load_(pd.read_csv('data/ordi_expat_dakar.csv'), 'Computers data', '1')
     load_(pd.read_csv('data/phone_expat_dakar.csv'), 'Telephones data', '2')
     load_(pd.read_csv('data/expat_cinema_dakar.csv'), 'Cinema data', '3')
    
+elif options == "Dashboard of the data":
+    df_ordis = pd.read_csv('data/ordi_expat_dakar.csv')
+    df_phones = pd.read_csv('data/phone_expat_dakar.csv')
+    df_cinema= pd.read_csv('data/expat_cinema_dakar.csv')
+
+    df_ordis = df_ordis.drop(['web-scraper-order','web-scraper-start-url'],, axis = 1)
+    df_ordis.price.replace('F Cfa','').astype('int')
+    df_ordis.brand.astype('str')
+
+    st.write('Types'+df_ordis.info())
+    
+
+    
     
 
 
