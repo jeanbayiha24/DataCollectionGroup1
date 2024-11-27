@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup as bs
 from requests import get
 import streamlit as st
 import pandas as pd
-
+from urllib.request import Request, urlopen
 
 st.markdown("<h1 style='text-align: center; color: black;'>GROUP 1 DATA APP</h1>", unsafe_allow_html=True)
 
