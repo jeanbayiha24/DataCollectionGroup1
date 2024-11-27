@@ -118,6 +118,27 @@ elif st.button("Cinema data"):
 
 
 
+# Function for loading the data
+def load_(dataframe, title, key) :
+    st.markdown("""
+    <style>
+    div.stButton {text-align:center}
+    </style>""", unsafe_allow_html=True)
+
+    if st.button(title,key):
+      
+        st.subheader('Display data dimension')
+        st.write('Data dimension: ' + str(dataframe.shape[0]) + ' rows and ' + str(dataframe.shape[1]) + ' columns.')
+        st.dataframe(dataframe)
+
+# load the data
+if options = "Download scraped data":
+    load_(pd.read_csv('data/ordi_expat_dakar.csv'), 'Computers data', '1')
+    load_(pd.read_csv('data/phone_expat_dakar.csv'), 'Telephones data', '2')
+    load_(pd.read_csv('data/expat_cinema_dakar.csv'), 'Cinema data', '3')
+    load_(pd.read_csv('data/motos_scooters4.csv'), 'Motocycles data 4', '4')
+    load_(pd.read_csv('data/motos_scooters5.csv'), 'Motocycles data 5', '5')
+    
 
 
 
