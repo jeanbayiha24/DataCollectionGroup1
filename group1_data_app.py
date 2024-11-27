@@ -133,8 +133,7 @@ elif options == "Download scraped data":
     load_(pd.read_csv('data/ordi_expat_dakar.csv'), 'Computers data', '1')
     load_(pd.read_csv('data/phone_expat_dakar.csv'), 'Telephones data', '2')
     load_(pd.read_csv('data/expat_cinema_dakar.csv'), 'Cinema data', '3')
-    load_(pd.read_csv('data/motos_scooters4.csv'), 'Motocycles data 4', '4')
-    load_(pd.read_csv('data/motos_scooters5.csv'), 'Motocycles data 5', '5')
+   
     
 
 
