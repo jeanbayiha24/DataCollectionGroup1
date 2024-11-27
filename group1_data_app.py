@@ -151,7 +151,11 @@ elif options == "Dashboard of the data":
     plt.ylabel('Average prices (FCFA)', fontsize=12)
     plt.xticks(rotation=45, ha='right')#Rotate the names of the bars
     st.pyplot(plot1)
-    
+
+else:
+    components.html("""
+    <iframe src="https://ee.kobotoolbox.org/i/QSMp2YGW" width="800" height="600"></iframe>
+    """,height=1100,width=800)
 
     
     
