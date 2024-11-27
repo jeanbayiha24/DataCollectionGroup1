@@ -92,32 +92,6 @@ def scrape_all_bs(pages_nb, link):
     df = pd.DataFrame(data)
     return df
 
-if st.button("Computer data"):
-    if options=="Scrape data using BeautifulSoup":
-        df = scrape_all_bs(pages_indexes, url_ordis)
-        
-        st.subheader('Display data dimension')
-        st.write('Data dimension: ' + str(df.shape[0]) + ' rows and ' + str(df.shape[1]) + ' columns.')
-        st.dataframe(df)
-
-elif st.button("Telephones data"):
-    if options=="Scrape data using BeautifulSoup":
-        df = scrape_all_bs(pages_indexes, url_phones)
-        
-        st.subheader('Display data dimension')
-        st.write('Data dimension: ' + str(df.shape[0]) + ' rows and ' + str(df.shape[1]) + ' columns.')
-        st.dataframe(df)
-
-elif st.button("Cinema data"):
-    if options=="Scrape data using BeautifulSoup":
-        df = scrape_all_bs(pages_indexes, url_cinema)
-        
-        st.subheader('Display data dimension')
-        st.write('Data dimension: ' + str(df.shape[0]) + ' rows and ' + str(df.shape[1]) + ' columns.')
-        st.dataframe(df)
-
-
-
 # Function for loading the data
 def load_(dataframe, title, key) :
     st.markdown("""
@@ -130,6 +104,29 @@ def load_(dataframe, title, key) :
         st.subheader('Display data dimension')
         st.write('Data dimension: ' + str(dataframe.shape[0]) + ' rows and ' + str(dataframe.shape[1]) + ' columns.')
         st.dataframe(dataframe)
+
+#The conditions of the options of the sidebar
+if options=="Scrape data using BeautifulSoup":
+    if st.button("Computer data"):
+        df = scrape_all_bs(pages_indexes, url_ordis)
+        st.subheader('Display data dimension')
+        st.write('Data dimension: ' + str(df.shape[0]) + ' rows and ' + str(df.shape[1]) + ' columns.')
+        st.dataframe(df)
+    
+    elif st.button("Telephones data"):
+        df = scrape_all_bs(pages_indexes, url_phones)
+        st.subheader('Display data dimension')
+        st.write('Data dimension: ' + str(df.shape[0]) + ' rows and ' + str(df.shape[1]) + ' columns.')
+        st.dataframe(df)
+    
+    elif st.button("Cinema data"):
+        df = scrape_all_bs(pages_indexes, url_cinema)
+        st.subheader('Display data dimension')
+        st.write('Data dimension: ' + str(df.shape[0]) + ' rows and ' + str(df.shape[1]) + ' columns.')
+        st.dataframe(df)
+
+
+
 
 # load the data
 if options = "Download scraped data":
