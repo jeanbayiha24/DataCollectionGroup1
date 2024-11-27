@@ -3,6 +3,8 @@ from bs4 import BeautifulSoup as bs
 from requests import get
 import streamlit as st
 import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 st.markdown("<h1 style='text-align: center; color: black;'>GROUP 1 DATA APP</h1>", unsafe_allow_html=True)
 
