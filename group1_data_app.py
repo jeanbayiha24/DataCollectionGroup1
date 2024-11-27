@@ -149,6 +149,7 @@ elif options == "Dashboard of the data":
     plt.title('Average price per brand', fontsize=14)
     plt.xlabel('Brands', fontsize=12)
     plt.ylabel('Average prices (FCFA)', fontsize=12)
+    plt.xticks(rotation=45, ha='right')#Rotate the names of the bars
     st.pyplot(plot1)
     
 
