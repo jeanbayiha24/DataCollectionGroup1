@@ -101,6 +101,23 @@ if st.button("Computer data"):
         st.write('Data dimension: ' + str(df.shape[0]) + ' rows and ' + str(df.shape[1]) + ' columns.')
         st.dataframe(df)
 
+elif st.button("Telephones data"):
+    if options=="Scrape data using BeautifulSoup":
+        df = scrape_all_bs(pages_indexes, url_phones)
+        
+        st.subheader('Display data dimension')
+        st.write('Data dimension: ' + str(df.shape[0]) + ' rows and ' + str(df.shape[1]) + ' columns.')
+        st.dataframe(df)
+
+elif st.button("Cinema data"):
+    if options=="Scrape data using BeautifulSoup":
+        df = scrape_all_bs(pages_indexes, url_cinema)
+        
+        st.subheader('Display data dimension')
+        st.write('Data dimension: ' + str(df.shape[0]) + ' rows and ' + str(df.shape[1]) + ' columns.')
+        st.dataframe(df)
+
+
 
 
 
