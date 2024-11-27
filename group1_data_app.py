@@ -137,11 +137,26 @@ elif options == "Dashboard of the data":
     df_phones = pd.read_csv('data/phone_expat_dakar.csv')
     df_cinema= pd.read_csv('data/expat_cinema_dakar.csv')
 
-    df_ordis = df_ordis.drop(['web-scraper-order','web-scraper-start-url'], axis = 1)
-    df_ordis['price'] = pd.to_numeric(df_ordis['price'].str.replace('F Cfa', '', regex=False).str.replace(' ', ''),  errors='coerce')
-    df_ordis.brand.astype('str')
+    df_ordis = df_ordis.drop(['web-scraper-order','web-scraper-start-url'], axis = 1) #We drop the useless columns
+    df_ordis['price'] = pd.to_numeric(df_ordis['price'].str.replace('F Cfa', '', regex=False).str.replace(' ', ''),  errors='coerce')#We clean the 'price' column
 
-    st.write('Types'+str(df_ordis.dtypes))
+    col1= st.columns(1)
+
+    with col1:
+        plot1= plt.figure(figsize=(11,7))
+        color = (0.2, # redness
+                 0.4, # greenness
+                 0.2, # blueness
+                 0.6 # transparency
+                 )
+        plt.bar(df_ordis.brand, df_ordis.price.value_counts().values, color = color)
+        plt.title('The prices of the brands')
+        plt.xlabel('brands')
+        plt.ylabel('prices')
+        st.pyplot(plot1)
+    
+
+    
     
 
     
