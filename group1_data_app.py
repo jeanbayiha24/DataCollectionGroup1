@@ -129,7 +129,7 @@ if options=="Scrape data using BeautifulSoup":
 
 
 # load the data
-if options == "Download scraped data":
+elif options == "Download scraped data":
     load_(pd.read_csv('data/ordi_expat_dakar.csv'), 'Computers data', '1')
     load_(pd.read_csv('data/phone_expat_dakar.csv'), 'Telephones data', '2')
     load_(pd.read_csv('data/expat_cinema_dakar.csv'), 'Cinema data', '3')
