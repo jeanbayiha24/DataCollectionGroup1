@@ -141,7 +141,7 @@ elif options == "Dashboard of the data":
     df_ordis['price'] = pd.to_numeric(df_ordis['price'].str.replace('F Cfa', '', regex=False).str.replace(' ', ''),  errors='coerce')
     df_ordis.brand.astype('str')
 
-    st.write('Types'+df_ordis.info())
+    st.write('Types'+df_ordis.dtypes)
     
 
     
