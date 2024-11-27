@@ -3,7 +3,6 @@ from bs4 import BeautifulSoup as bs
 from requests import get
 import streamlit as st
 import pandas as pd
-from urllib.request import Request, urlopen
 
 st.markdown("<h1 style='text-align: center; color: black;'>GROUP 1 DATA APP</h1>", unsafe_allow_html=True)
 
@@ -38,8 +37,8 @@ def scrape_all_bs(pages_nb, link):
     data = []
     
     for page in range(1, pages_nb + 1):
-        headers = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+        headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)',
+        'Accept-Language': 'en-US,en;q=0.9',
         }
         
         url = f"{link}?page={page}"
