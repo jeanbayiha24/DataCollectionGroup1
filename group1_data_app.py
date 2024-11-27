@@ -38,7 +38,9 @@ def scrape_all_bs(pages_nb, link):
     data = []
     
     for page in range(1, pages_nb + 1):
-        headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'}
+        headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+        }
         
         url = f"{link}?page={page}"
         res = get(url, headers=headers)
