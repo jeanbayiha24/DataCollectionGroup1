@@ -137,7 +137,7 @@ elif options == "Dashboard of the data":
     df_phones = pd.read_csv('data/phone_expat_dakar.csv')
     df_cinema= pd.read_csv('data/expat_cinema_dakar.csv')
 
-    df_ordis = df_ordis.drop(['web-scraper-order','web-scraper-start-url'],, axis = 1)
+    df_ordis = df_ordis.drop(['web-scraper-order','web-scraper-start-url'], axis = 1)
     df_ordis.price.replace('F Cfa','').astype('int')
     df_ordis.brand.astype('str')
 
