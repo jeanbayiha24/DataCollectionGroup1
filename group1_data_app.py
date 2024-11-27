@@ -140,20 +140,14 @@ elif options == "Dashboard of the data":
     df_ordis = df_ordis.drop(['web-scraper-order','web-scraper-start-url'], axis = 1) #We drop the useless columns
     df_ordis['price'] = pd.to_numeric(df_ordis['price'].str.replace('F Cfa', '', regex=False).str.replace(' ', ''),  errors='coerce')#We clean the 'price' column
 
-    col1= st.columns(1)
+    avg_prices_by_brand = df_ordis.groupby('brand')['price'].mean().sort_values(ascending=False)
 
-    with col1:
-        plot1= plt.figure(figsize=(11,7))
-        color = (0.2, # redness
-                 0.4, # greenness
-                 0.2, # blueness
-                 0.6 # transparency
-                 )
-        plt.bar(df_ordis.brand, df_ordis.price.value_counts().values, color = color)
-        plt.title('The prices of the brands')
-        plt.xlabel('brands')
-        plt.ylabel('prices')
-        st.pyplot(plot1)
+    plot1 = plt.figure(figsize=(11, 7))
+    avg_prices_by_brand.plot(kind='bar', color=(0.2, 0.4, 0.2, 0.6))
+    plt.title('Average price per brand', fontsize=14)
+    plt.xlabel('Brands', fontsize=12)
+    plt.ylabel('Average prices (FCFA)', fontsize=12)
+    st.pyplot(plot1)
     
 
     
