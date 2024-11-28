@@ -35,16 +35,7 @@ st.markdown("""
     div.stButton {text-align:center}
     </style>""", unsafe_allow_html=True)
 
-proxy_addresses = {
-    'http': 'http://196.1.95.124:80', 
-    'https': 'http://41.74.91.244:80'
-}
-headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
-            'Accept-Language': 'en-US,en;q=0.9',
-            'Accept-Encoding': 'gzip, deflate, br',
-            'Connection': 'keep-alive',
-        }
+    
 def scrape_all_bs(pages_nb, link):
     # Generalize the scraping over all pages
     data = []
@@ -52,11 +43,19 @@ def scrape_all_bs(pages_nb, link):
     for page in range(1, pages_nb + 1):
         
         url = f"{link}?page={page}"
-        res = get(url, headers=headers, proxies=proxy_addresses)
+
+        proxy_list = [{"http": "http://13.36.87.105:3128", "https": "http://13.36.87.105:3128"},{"http": "http://154.0.12.163:80", "https": "http://154.0.12.163:80"}]
+
+        for proxy in proxy_list:
+            try:
+                res = get(url, proxies=proxy, timeout=5)
+                if res.status_code != 200:
+                    st.write(f"Erreur sur la page {page}: Code HTTP {res.status_code}")
+                    continue
+            except Exception as e:
+                print(f"Proxy {proxy['http']} failed: {e}")
+               
         
-        if res.status_code != 200:
-            st.write(f"Erreur sur la page {page}: Code HTTP {res.status_code}")
-            continue
         
         soup = bs(res.text, 'html.parser')
             
