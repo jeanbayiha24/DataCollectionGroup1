@@ -148,7 +148,7 @@ elif options == "Dashboard of the data":
     df_cinema= pd.read_csv('data/expat_cinema_dakar.csv')
     st.write(str(df_ordis['price'].unique()))
     df_ordis = df_ordis.drop(['web-scraper-order','web-scraper-start-url'], axis = 1) #We drop the useless columns
-    df_ordis['price'] = pd.to_numeric(df_ordis['price'].str.replace('F Cfa', '', regex=False).str.replace(' ', ''),  errors='coerce')#We clean the 'price' column
+    df_ordis['price'] = pd.to_numeric(df_ordis['price'].str.replace('F Cfa', '').str.replace('\u202f', ''),  errors='coerce')#We clean the 'price' column
 
     
     avg_prices_by_brand = df_ordis.groupby('brand')['price'].mean().dropna()
