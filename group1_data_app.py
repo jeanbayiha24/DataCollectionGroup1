@@ -18,9 +18,18 @@ st.markdown("""
 This app performs webscraping of data from expat-dakar over multiples pages. And we can also download scraped data from the app directly without scraping them.
 
 * **Python libraries:** base64, pandas, streamlit, requests, bs4, matplotlib
-* **Data source:** [Expat-Dakar-ordinateurs](https://www.expat-dakar.com/ordinateurs) <img src='images/computer_image'>— [Expat-Dakar-telephones](https://www.expat-dakar.com/telephones) - [Expat-Dakar-cinema](https://www.expat-dakar.com/tv-home-cinema).
+* **Data source:** [Expat-Dakar-ordinateurs](https://www.expat-dakar.com/ordinateurs) - [Expat-Dakar-telephones](https://www.expat-dakar.com/telephones) - [Expat-Dakar-cinema](https://www.expat-dakar.com/tv-home-cinema).
 """)
-st.image('images/expat_dakar_logo.png', width=150)  
+col1, col2, col3, col4 = st.columns([1, 5])
+
+with col1:
+    st.image('images/expat_dakar_logo.png', width=150)  
+with col2:
+    st.image('images/computer_image.jpg', width=100)
+with col3:
+    st.image('images/phones_image.webp', width=100)
+with col4:
+    st.image('images/tv.jpg', width=100)
 
 st.sidebar.markdown(
     """<h2 style='color: #0e0f10; background-color: #87CEEB; padding: 10px; text-align: center; border-radius: 10px;'>User Input Features</h2>
