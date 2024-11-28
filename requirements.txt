@@ -1,4 +1,3 @@
-random
 bs4
 requests
 scipy
