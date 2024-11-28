@@ -88,9 +88,9 @@ def scrape_all_bs(pages_nb, link):
     #    }
         apikey = '7153b3ea86ef620b6b9b6f6b9271028a928e475b'
         params = {
-        'url': quote(url, safe=''),
+        'url': url,
         'apikey': apikey,
-    	'premium_proxy': 'true',
+    	'premium_proxy': 'true'
         }
         
         res = get('https://api.zenrows.com/v1/', params=params)
