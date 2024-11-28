@@ -60,7 +60,7 @@ def add_bg_from_local(image_file):
     unsafe_allow_html=True
     )
 
-
+#We tried to use a proxy server to enter in the expat-dakar website but it failed
 #proxies = {
 #    "http": "http://D4MgFT6C9WSP:DB06xRBK1v4s_region-af_ttl-30s_session-ZF2nnrSU8ns4@superproxy.zenrows.com:1337",
 #    "https": "https://D4MgFT6C9WSP:DB06xRBK1v4s_region-af_ttl-30s_session-ZDPAx4mVDWIm@superproxy.zenrows.com:1338"
@@ -184,6 +184,20 @@ elif options == "Dashboard of the data":
     plt.xticks(rotation=45, ha='right')#Rotate the names of the bars
     st.pyplot(plot1)
 
+    # Verify the importants columns (computer_condition, brand, etc.)
+    df_ordis['computer_condition'] = df_ordis['computer_condition'].str.strip()  # clean the spaces
+    df_ordis['brand'] = df_ordis['brand'].str.strip()  # clean the spaces
+    
+    # Drop the NaN values
+    df_ordis = df_ordis.dropna(subset=['price', 'brand', 'computer_condition'])  
+    plot4 =  plt.figure(figsize=(12, 6))
+    sns.boxplot(data=df, x='computer_condition', y='price_cleaned', palette='Set2')
+    plt.title("Price distribution by computer status")
+    plt.xlabel("Status of the computer")
+    plt.ylabel("Price (F CFA)")
+    plt.grid(axis='y', linestyle='--', alpha=0.7)
+    st.pyplot(plot4)
+
     #For the Telephones data
     df_phones = df_phones.drop(['web-scraper-order','web-scraper-start-url'], axis = 1) #We drop the useless columns
     df_phones['price'] = pd.to_numeric(df_phones['price'].str.replace('F Cfa', '').str.replace('\u202f', ''),  errors='coerce')#We clean the 'price' column
@@ -195,6 +209,8 @@ elif options == "Dashboard of the data":
     plt.ylabel('Average prices (FCFA)', fontsize=12)
     plt.xticks(rotation=45, ha='right')#Rotate the names of the bars
     st.pyplot(plot2)
+
+
 
     #For the Cinema data
     df_cinema = df_cinema.drop(['web-scraper-order','web-scraper-start-url'], axis = 1) #We drop the useless columns
