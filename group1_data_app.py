@@ -20,7 +20,7 @@ This app performs webscraping of data from expat-dakar over multiples pages. And
 * **Python libraries:** base64, pandas, streamlit, requests, bs4, matplotlib
 * **Data source:** [Expat-Dakar-ordinateurs](https://www.expat-dakar.com/ordinateurs) — [Expat-Dakar-telephones](https://www.expat-dakar.com/telephones) - [Expat-Dakar-cinema](https://www.expat-dakar.com/tv-home-cinema).
 """)
-st.image('images/expat_dakar_logo.png', width=100)  
+st.image('images/expat_dakar_logo.png', width=150)  
 
 st.sidebar.markdown(
     """<h2 style='color: #0e0f10; background-color: #87CEEB; padding: 10px; text-align: center; border-radius: 10px;'>User Input Features</h2>
