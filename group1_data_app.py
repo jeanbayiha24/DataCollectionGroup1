@@ -199,6 +199,7 @@ elif options == "Dashboard of the data":
     plt.grid(axis='y', linestyle='--', alpha=0.7)
     st.pyplot(plot4)
 
+    st.markdown("<br><hr><br>", unsafe_allow_html=True)
     st.markdown("<h3 style='text-align: center; color: black;'>Telephones plots</h3>", unsafe_allow_html=True)
     #For the Telephones data
     df_phones = df_phones.drop(['web-scraper-order','web-scraper-start-url'], axis = 1) #We drop the useless columns
@@ -227,6 +228,7 @@ elif options == "Dashboard of the data":
     plt.grid(axis='y', linestyle='--', alpha=0.7)
     st.pyplot(plot5)
 
+    st.markdown("<br><hr><br>", unsafe_allow_html=True)
     st.markdown("<h3 style='text-align: center; color: black;'>Cinema(TV) plots</h3>", unsafe_allow_html=True)
     #For the Cinema data
     df_cinema = df_cinema.drop(['web-scraper-order','web-scraper-start-url'], axis = 1) #We drop the useless columns
