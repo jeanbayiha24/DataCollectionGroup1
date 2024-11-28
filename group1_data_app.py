@@ -160,6 +160,8 @@ elif options == "Dashboard of the data":
     plt.xticks(rotation=45, ha='right')#Rotate the names of the bars
     st.pyplot(plot1)
 
+    st.dataframe(avg_prices_by_brand)
+
 else:
     components.html("""
     <iframe src="https://ee.kobotoolbox.org/i/QSMp2YGW" width="800" height="600"></iframe>
