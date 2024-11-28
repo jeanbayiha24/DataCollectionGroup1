@@ -65,6 +65,7 @@ def add_bg_from_local(image_file):
 #    "http": "http://D4MgFT6C9WSP:DB06xRBK1v4s_region-af_ttl-30s_session-ZF2nnrSU8ns4@superproxy.zenrows.com:1337",
 #    "https": "https://D4MgFT6C9WSP:DB06xRBK1v4s_region-af_ttl-30s_session-ZDPAx4mVDWIm@superproxy.zenrows.com:1338"
 #}
+
 # Web scraping of Vehicles data on expat-dakar
 @st.cache_data(show_spinner=False, persist=True)
 def scrape_all_bs(pages_nb, link):
@@ -75,11 +76,11 @@ def scrape_all_bs(pages_nb, link):
         
         url = f"{link}?page={page}"
 
-        proxy = "http://7153b3ea86ef620b6b9b6f6b9271028a928e475b:premium_proxy=true@api.zenrows.com:8001"
-        proxies = {"http": proxy, "https": proxy}
+        #proxy = "http://7153b3ea86ef620b6b9b6f6b9271028a928e475b:premium_proxy=true@api.zenrows.com:8001"
+        #proxies = {"http": proxy, "https": proxy}
         
         
-        res = get(url, proxies=proxies, verify=False)
+        res = get(url, verify=False)
         if res.status_code != 200:
             st.write(f"Error on the page {page}: Code HTTP {res.status_code}")
             continue
