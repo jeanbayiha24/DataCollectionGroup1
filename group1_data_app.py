@@ -8,8 +8,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit.components.v1 as components
-from zenrows import ZenRowsClient
 from urllib.parse import quote
+import time
 
 
 st.markdown("<h1 style='text-align: center; color: black;'>GROUP 1 DATA APP</h1>", unsafe_allow_html=True)
@@ -97,7 +97,7 @@ def scrape_all_bs(pages_nb, link):
         if res.status_code != 200:
             st.write(f"Error on the page {page}: Code HTTP {res.status_code}")
             continue
-               
+        st.write(str(res.text))   
         
         soup = bs(res.text, 'html.parser')
             
@@ -135,7 +135,7 @@ def scrape_all_bs(pages_nb, link):
                 
             except Exception as e:
                 pass  # Skip this container in case of an error
-        #time.sleep(2)  # Wait 2 seconds before the next request
+        time.sleep(2)  # Wait 2 seconds before the next request
     # Convert collected data to a DataFrame
     df = pd.DataFrame(data)
     return df
