@@ -8,6 +8,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit.components.v1 as components
+from zenrows import ZenRowsClient
 
 
 
