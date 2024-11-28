@@ -36,8 +36,8 @@ st.markdown("""
     </style>""", unsafe_allow_html=True)
 
 proxy_addresses = {
-    'http': 'http://72.206.181.123:4145',
-    'https': 'http://191.96.100.33:3128'
+    'http': 'http://196.1.95.124:80', 
+    'https': 'http://41.74.91.244:80'
 }
 
 def scrape_all_bs(pages_nb, link):
