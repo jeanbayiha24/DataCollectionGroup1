@@ -46,6 +46,7 @@ def scrape_all_bs(pages_nb, link):
 
         proxy_list = [{"http": "http://13.36.87.105:3128", "https": "http://13.36.87.105:3128"},{"http": "http://154.0.12.163:80", "https": "http://154.0.12.163:80"}]
 
+        res = None
         for proxy in proxy_list:
             try:
                 res = get(url, proxies=proxy, timeout=5)
