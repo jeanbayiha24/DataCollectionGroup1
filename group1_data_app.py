@@ -146,12 +146,12 @@ elif options == "Dashboard of the data":
     df_ordis = pd.read_csv('data/ordi_expat_dakar.csv')
     df_phones = pd.read_csv('data/phone_expat_dakar.csv')
     df_cinema= pd.read_csv('data/expat_cinema_dakar.csv')
-
-    df_ordis = df_ordis.drop(['web-scraper-order','web-scraper-start-url'], axis = 1) #We drop the useless columns
-    df_ordis['price'] = pd.to_numeric(df_ordis['price'].str.replace('F Cfa', '', regex=False).str.replace(' ', ''),  errors='coerce').dropna()#We clean the 'price' column
-
     st.write(str(df_ordis['price'].unique()))
-    avg_prices_by_brand = df_ordis.groupby('brand')['price'].mean()
+    df_ordis = df_ordis.drop(['web-scraper-order','web-scraper-start-url'], axis = 1) #We drop the useless columns
+    df_ordis['price'] = pd.to_numeric(df_ordis['price'].str.replace('F Cfa', '', regex=False).str.replace(' ', ''),  errors='coerce')#We clean the 'price' column
+
+    
+    avg_prices_by_brand = df_ordis.groupby('brand')['price'].mean().dropna()
 
     plot1 = plt.figure(figsize=(11, 7))
     avg_prices_by_brand.plot(kind='bar', color=(0.2, 0.4, 0.2, 0.6))
