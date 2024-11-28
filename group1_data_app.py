@@ -78,9 +78,15 @@ def scrape_all_bs(pages_nb, link):
         # Add user agents at random
         request_headers = {
             'user-agent': random.choice(user_agents),
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
-            'Accept-Language': 'en-US,en;q=0.9',
-            'Accept-Encoding': 'gzip, deflate, br'
+            'referer': 'https://www.scrapingcourse.com/ecommerce/',
+    'accept-language': 'en-US,en;q=0.9',
+    'content-type': 'application/json',
+    'accept-encoding': 'gzip, deflate, br',
+    'sec-ch-device-memory': '8',
+    'sec-ch-ua': '"Google Chrome";v="125", "Chromium";v="125", "Not.A/Brand";v="24"',
+    'sec-ch-ua-platform': "Windows",
+    'sec-ch-ua-platform-version': '"10.0.0"',
+    'sec-ch-viewport-width': '792',
         }
         res = get(url, headers=request_headers, timeout=5)
         if res.status_code != 200:
