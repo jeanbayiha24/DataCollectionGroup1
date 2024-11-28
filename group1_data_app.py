@@ -60,14 +60,8 @@ def add_bg_from_local(image_file):
     )
 
 
-user_agents =[
-    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36',
-    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36',
-    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36',
-    'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'
-    ]
 proxies = {
-    "http": "https://D4MgFT6C9WSP:DB06xRBK1v4s_region-af_ttl-30s_session-ZDPAx4mVDWIm@superproxy.zenrows.com:1338",
+    "http": "http://D4MgFT6C9WSP:DB06xRBK1v4s_region-af_ttl-30s_session-ZF2nnrSU8ns4@superproxy.zenrows.com:1337",
     "https": "https://D4MgFT6C9WSP:DB06xRBK1v4s_region-af_ttl-30s_session-ZDPAx4mVDWIm@superproxy.zenrows.com:1338"
 }
 # Web scraping of Vehicles data on expat-dakar
