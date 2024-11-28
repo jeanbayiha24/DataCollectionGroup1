@@ -75,25 +75,11 @@ def scrape_all_bs(pages_nb, link):
         
         url = f"{link}?page={page}"
 
-    #    request_headers = {
-    #'accept-language': 'en-US,en;q=0.9',
-    #'content-type': 'application/json',
-    #'accept-encoding': 'gzip, deflate, br',
-    #'sec-ch-device-memory': '8',
-    #'sec-ch-ua': '"Google Chrome";v="125", "Chromium";v="125", "Not.A/Brand";v="24"',
-    #'sec-ch-ua-platform': "Windows",
-    #'sec-ch-ua-platform-version': '"10.0.0"',
-    #'sec-ch-viewport-width': '792',
-    #'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36'
-    #    }
-        apikey = '7153b3ea86ef620b6b9b6f6b9271028a928e475b'
-        params = {
-        'url': url,
-        'apikey': apikey,
-    	'premium_proxy': 'true'
-        }
+        proxy = "http://7153b3ea86ef620b6b9b6f6b9271028a928e475b:premium_proxy=true@api.zenrows.com:8001"
+        proxies = {"http": proxy, "https": proxy}
         
-        res = get('https://api.zenrows.com/v1/', params=params)
+        
+        res = get(url, proxies=proxies, verify=False)
         if res.status_code != 200:
             st.write(f"Error on the page {page}: Code HTTP {res.status_code}")
             continue
