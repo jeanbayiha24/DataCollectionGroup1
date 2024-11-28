@@ -19,7 +19,11 @@ This app performs webscraping of data from dakar-auto over multiples pages. And 
 """)
 
 st.sidebar.markdown(
-    "<h2 style='color: #0e0f10; background-color: #ecdcaa; padding: 10px; text-align: center; border-radius: 10px;'>User Input Features</h2>",
+    """<h2 style='color: #0e0f10; background-color: #87CEEB; padding: 10px; text-align: center; border-radius: 10px;'>User Input Features</h2>
+    <style>.stSelectbox > label { 
+        color: #0e0f10; 
+    }
+    </style>""",
     unsafe_allow_html=True,
 )
 
