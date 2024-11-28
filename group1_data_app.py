@@ -86,10 +86,14 @@ def scrape_all_bs(pages_nb, link):
     #'sec-ch-viewport-width': '792',
     #'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36'
     #    }
-        client = ZenRowsClient("7153b3ea86ef620b6b9b6f6b9271028a928e475b")
-        params = {"premium_proxy":"true"}
+        apikey = '7153b3ea86ef620b6b9b6f6b9271028a928e475b'
+        params = {
+        'url': url,
+        'apikey': apikey,
+    	'premium_proxy': 'true',
+        }
         
-        res = client.get(url, params=params)
+        res = client.get('https://api.zenrows.com/v1/', params=params)
         if res.status_code != 200:
             st.write(f"Error on the page {page}: Code HTTP {res.status_code}")
             continue
