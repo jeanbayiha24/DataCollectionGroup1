@@ -1,5 +1,6 @@
 # import packages
 from bs4 import BeautifulSoup as bs
+import base64
 from requests import get
 import streamlit as st
 import pandas as pd
@@ -36,6 +37,24 @@ st.markdown("""
     div.stButton {text-align:center}
     </style>""", unsafe_allow_html=True)
 
+# Background function
+def add_bg_from_local(image_file):
+    with open(image_file, "rb") as image_file:
+        encoded_string = base64.b64encode(image_file.read())
+    st.markdown(
+    f"""
+    <style>
+    .stApp {{
+        background-image: url(data:image/{"jpg"};base64,{encoded_string.decode()});
+        background-size: cover
+    }}
+    </style>
+    """,
+    unsafe_allow_html=True
+    )
+
+# Web scraping of Vehicles data on expat-dakar
+@st.cache_data
     
 def scrape_all_bs(pages_nb, link):
     # Generalize the scraping over all pages
@@ -115,6 +134,8 @@ def load_(dataframe, title, key) :
         st.subheader('Display data dimension')
         st.write('Data dimension: ' + str(dataframe.shape[0]) + ' rows and ' + str(dataframe.shape[1]) + ' columns.')
         st.dataframe(dataframe)
+
+add_bg_from_local('images/')
 
 #The conditions of the options of the sidebar
 if options=="Scrape data using BeautifulSoup":
