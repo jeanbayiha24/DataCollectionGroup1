@@ -84,10 +84,10 @@ def scrape_all_bs(pages_nb, link):
     #'sec-ch-ua-platform-version': '"10.0.0"',
     #'sec-ch-viewport-width': '792',
     #'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36'
-        }
+    #    }
         res = get(url, timeout=30, verify=False)
         if res.status_code != 200:
-            st.write(f"Erreur sur la page {page}: Code HTTP {res.status_code}")
+            st.write(f"Error on the page {page}: Code HTTP {res.status_code}")
             continue
                
         
