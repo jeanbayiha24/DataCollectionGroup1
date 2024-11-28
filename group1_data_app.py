@@ -172,6 +172,7 @@ elif options == "Dashboard of the data":
     df_phones = pd.read_csv('data/phone_expat_dakar.csv')
     df_cinema= pd.read_csv('data/expat_cinema_dakar.csv')
 
+    st.markdown("<h3 style='text-align: center; color: black;'>Computers plots</h3>", unsafe_allow_html=True)
     #For the computers data
     df_ordis = df_ordis.drop(['web-scraper-order','web-scraper-start-url'], axis = 1) #We drop the useless columns
     df_ordis['price'] = pd.to_numeric(df_ordis['price'].str.replace('F Cfa', '').str.replace('\u202f', ''),  errors='coerce')#We clean the 'price' column
@@ -198,6 +199,7 @@ elif options == "Dashboard of the data":
     plt.grid(axis='y', linestyle='--', alpha=0.7)
     st.pyplot(plot4)
 
+    st.markdown("<h3 style='text-align: center; color: black;'>Telephones plots</h3>", unsafe_allow_html=True)
     #For the Telephones data
     df_phones = df_phones.drop(['web-scraper-order','web-scraper-start-url'], axis = 1) #We drop the useless columns
     df_phones['price'] = pd.to_numeric(df_phones['price'].str.replace('F Cfa', '').str.replace('\u202f', ''),  errors='coerce')#We clean the 'price' column
@@ -212,6 +214,7 @@ elif options == "Dashboard of the data":
 
 
 
+    st.markdown("<h3 style='text-align: center; color: black;'>Cinema(TV) plots</h3>", unsafe_allow_html=True)
     #For the Cinema data
     df_cinema = df_cinema.drop(['web-scraper-order','web-scraper-start-url'], axis = 1) #We drop the useless columns
     df_cinema['price'] = pd.to_numeric(df_cinema['price'].str.replace('F Cfa', '').str.replace('\u202f', ''),  errors='coerce')#We clean the 'price' column
