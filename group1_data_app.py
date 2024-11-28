@@ -93,7 +93,7 @@ def scrape_all_bs(pages_nb, link):
     	'premium_proxy': 'true',
         }
         
-        res = client.get('https://api.zenrows.com/v1/', params=params)
+        res = get('https://api.zenrows.com/v1/', params=params)
         if res.status_code != 200:
             st.write(f"Error on the page {page}: Code HTTP {res.status_code}")
             continue
