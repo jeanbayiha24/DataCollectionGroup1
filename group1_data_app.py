@@ -1,5 +1,6 @@
 # import packages
 from bs4 import BeautifulSoup as bs
+import random
 import base64
 from requests import get
 import streamlit as st
