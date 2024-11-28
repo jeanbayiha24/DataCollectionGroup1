@@ -66,7 +66,7 @@ user_agents =[
     'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36',
     'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'
     ]
-proxy = "http://D4MgFT6C9WSP:DB06xRBK1v4s@superproxy.zenrows.com:1337"
+proxy = "https://D4MgFT6C9WSP:DB06xRBK1v4s_region-af_ttl-30s_session-ZDPAx4mVDWIm@superproxy.zenrows.com:1338"
 # Web scraping of Vehicles data on expat-dakar
 @st.cache_data
 def scrape_all_bs(pages_nb, link):
