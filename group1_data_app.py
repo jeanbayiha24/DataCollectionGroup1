@@ -89,7 +89,7 @@ def scrape_all_bs(pages_nb, link):
     'sec-ch-ua-platform': "Windows",
     'sec-ch-ua-platform-version': '"10.0.0"',
     'sec-ch-viewport-width': '792',
-    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36'
         }
         res = get(url, headers=request_headers, proxies =proxies, timeout=5)
         if res.status_code != 200:
