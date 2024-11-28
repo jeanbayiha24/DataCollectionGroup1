@@ -8,9 +8,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit.components.v1 as components
-from zenrows import ZenRowsClient
 
-client = ZenRowsClient("7153b3ea86ef620b6b9b6f6b9271028a928e475b")
 
 
 st.markdown("<h1 style='text-align: center; color: black;'>GROUP 1 DATA APP</h1>", unsafe_allow_html=True)
@@ -90,7 +88,7 @@ def scrape_all_bs(pages_nb, link):
     'sec-ch-ua-platform-version': '"10.0.0"',
     'sec-ch-viewport-width': '792',
         }
-        res = client.get(url, headers=request_headers, timeout=5)
+        res = get(url, headers=request_headers, timeout=5)
         if res.status_code != 200:
             st.write(f"Erreur sur la page {page}: Code HTTP {res.status_code}")
             continue
