@@ -146,19 +146,42 @@ elif options == "Dashboard of the data":
     df_ordis = pd.read_csv('data/ordi_expat_dakar.csv')
     df_phones = pd.read_csv('data/phone_expat_dakar.csv')
     df_cinema= pd.read_csv('data/expat_cinema_dakar.csv')
-    
+
+    #For the computers data
     df_ordis = df_ordis.drop(['web-scraper-order','web-scraper-start-url'], axis = 1) #We drop the useless columns
     df_ordis['price'] = pd.to_numeric(df_ordis['price'].str.replace('F Cfa', '').str.replace('\u202f', ''),  errors='coerce')#We clean the 'price' column
-
     avg_prices_by_brand = df_ordis.groupby('brand')['price'].mean().dropna()
-
     plot1 = plt.figure(figsize=(11, 7))
     avg_prices_by_brand.plot(kind='bar', color=(0.2, 0.4, 0.2, 0.6))
-    plt.title('Average price of comuters per brand', fontsize=14)
+    plt.title('Average price of computers per brand', fontsize=14)
     plt.xlabel('Brands', fontsize=12)
     plt.ylabel('Average prices (FCFA)', fontsize=12)
     plt.xticks(rotation=45, ha='right')#Rotate the names of the bars
     st.pyplot(plot1)
+
+    #For the Telephones data
+    df_phones = df_phones.drop(['web-scraper-order','web-scraper-start-url'], axis = 1) #We drop the useless columns
+    df_phones['price'] = pd.to_numeric(df_phones['price'].str.replace('F Cfa', '').str.replace('\u202f', ''),  errors='coerce')#We clean the 'price' column
+    avg_prices_by_brand2 = df_phones.groupby('brand')['price'].mean().dropna()
+    plot2 = plt.figure(figsize=(11, 7))
+    avg_prices_by_brand2.plot(kind='bar', color=(0.2, 0.4, 0.7, 0.6))
+    plt.title('Average price of telephones per brand', fontsize=14)
+    plt.xlabel('Brands', fontsize=12)
+    plt.ylabel('Average prices (FCFA)', fontsize=12)
+    plt.xticks(rotation=45, ha='right')#Rotate the names of the bars
+    st.pyplot(plot2)
+
+    #For the Cinema data
+    df_cinema = df_cinema.drop(['web-scraper-order','web-scraper-start-url'], axis = 1) #We drop the useless columns
+    df_cinema['price'] = pd.to_numeric(df_cinema['price'].str.replace('F Cfa', '').str.replace('\u202f', ''),  errors='coerce')#We clean the 'price' column
+    avg_prices_by_brand3 = df_cinema.groupby('brand')['price'].mean().dropna()
+    plot3 = plt.figure(figsize=(11, 7))
+    avg_prices_by_brand3.plot(kind='bar', color=(0.4, 0.4, 0.7, 0.6))
+    plt.title('Average price of TV per brand', fontsize=14)
+    plt.xlabel('Brands', fontsize=12)
+    plt.ylabel('Average prices (FCFA)', fontsize=12)
+    plt.xticks(rotation=45, ha='right')#Rotate the names of the bars
+    st.pyplot(plot3)
 
 
 else:
