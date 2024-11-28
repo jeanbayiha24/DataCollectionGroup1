@@ -7,6 +7,16 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit.components.v1 as components
 
+st.markdown( """
+<style>
+body {
+    background-image: url("images/pngtree-background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+</style>
+""", unsafe_allow_html=True)
 st.markdown("<h1 style='text-align: center; color: black;'>GROUP 1 DATA APP</h1>", unsafe_allow_html=True)
 
 st.markdown("""
