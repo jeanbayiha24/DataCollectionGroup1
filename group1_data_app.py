@@ -60,10 +60,10 @@ def add_bg_from_local(image_file):
     )
 
 
-#proxies = {
-#    "http": "http://D4MgFT6C9WSP:DB06xRBK1v4s_region-af_ttl-30s_session-ZF2nnrSU8ns4@superproxy.zenrows.com:1337",
-#    "https": "https://D4MgFT6C9WSP:DB06xRBK1v4s_region-af_ttl-30s_session-ZDPAx4mVDWIm@superproxy.zenrows.com:1338"
-#}
+proxies = {
+    "http": "http://D4MgFT6C9WSP:DB06xRBK1v4s_region-af_ttl-30s_session-ZF2nnrSU8ns4@superproxy.zenrows.com:1337",
+    "https": "https://D4MgFT6C9WSP:DB06xRBK1v4s_region-af_ttl-30s_session-ZDPAx4mVDWIm@superproxy.zenrows.com:1338"
+}
 # Web scraping of Vehicles data on expat-dakar
 @st.cache_data(show_spinner=False)
 def scrape_all_bs(pages_nb, link):
@@ -73,7 +73,7 @@ def scrape_all_bs(pages_nb, link):
     for page in range(1, pages_nb + 1):
         
         url = f"{link}?page={page}"
-        # Add user agents at random
+
         request_headers = {
     'accept-language': 'en-US,en;q=0.9',
     'content-type': 'application/json',
@@ -85,7 +85,7 @@ def scrape_all_bs(pages_nb, link):
     'sec-ch-viewport-width': '792',
     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36'
         }
-        res = get(url, headers=request_headers, timeout=30)
+        res = get(url, headers=request_headers, proxies=proxies, timeout=30)
         if res.status_code != 200:
             st.write(f"Erreur sur la page {page}: Code HTTP {res.status_code}")
             continue
