@@ -83,7 +83,6 @@ def scrape_all_bs(pages_nb, link):
         if res.status_code != 200:
             st.write(f"Error on the page {page}: Code HTTP {res.status_code}")
             continue
-        st.write(str(res.text))   
         
         soup = bs(res.text, 'html.parser')
             
