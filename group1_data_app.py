@@ -77,7 +77,10 @@ def scrape_all_bs(pages_nb, link):
         url = f"{link}?page={page}"
         # Add user agents at random
         request_headers = {
-            'user-agent': random.choice(user_agents)
+            'user-agent': random.choice(user_agents),
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+            'Accept-Language': 'en-US,en;q=0.9',
+            'Accept-Encoding': 'gzip, deflate, br'
         }
         res = get(url, headers=request_headers, timeout=5)
         if res.status_code != 200:
