@@ -66,12 +66,6 @@ user_agents =[
     'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'
     ]
 
-#List of proxy addresses
-proxy_list = [{"http": "http://13.36.87.105:3128", "https": "http://13.36.87.105:3128"},
-                      {"http": "http://154.0.12.163:80", "https": "http://154.0.12.163:80"},
-                    {"http": "http://8.221.138.111:8081", "https": "http://43.153.237.252:3128"},
-                      {"http": "http://154.0.12.163:80"}, {"http": "http://91.148.134.48:80"},	{"http": "http://38.54.59.154:80"}]
-
 # Web scraping of Vehicles data on expat-dakar
 @st.cache_data
 def scrape_all_bs(pages_nb, link):
@@ -85,17 +79,11 @@ def scrape_all_bs(pages_nb, link):
         request_headers = {
             'user-agent': random.choice(user_agents)
         }
-        res = None
-        for proxy in proxy_list:
-            try:
-                res = get(url,headers=request_headers , proxies=proxy, timeout=5)
+        res = get(url, proxies=proxy, timeout=5)
                 if res.status_code != 200:
                     st.write(f"Erreur sur la page {page}: Code HTTP {res.status_code}")
                     continue
-            except Exception as e:
-                print(f"Proxy {proxy['http']} failed: {e}")
                
-        
         
         soup = bs(res.text, 'html.parser')
             
