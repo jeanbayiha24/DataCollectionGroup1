@@ -140,23 +140,38 @@ def load_(dataframe, title, key) :
         st.write('Data dimension: ' + str(dataframe.shape[0]) + ' rows and ' + str(dataframe.shape[1]) + ' columns.')
         st.dataframe(dataframe)
 
+# A function to show an image and a button
+def add_button_with_image(button_label, image_path):
+    # Create 2 columns
+    col1, col2 = st.columns([1, 3])  #Columns for image and text
+
+    # Show image in the first column
+    with col1:
+        st.image(image_path, width=50)  # Ajustez la taille de l'image ici
+
+    # Show the button in the second column
+    with col2:
+        if st.button(button_label):
+            return True
+    return False
+    
 add_bg_from_local('images/pngtree-technology-data.jpg')
 
 #The conditions of the options of the sidebar
 if options=="Scrape data using BeautifulSoup":
-    if st.button("Computer data"):
+    if add_button_with_image("Computer data", "images/computer_image.jpg"):
         df = scrape_all_bs(pages_indexes, url_ordis)
         st.subheader('Display data dimension')
         st.write('Data dimension: ' + str(df.shape[0]) + ' rows and ' + str(df.shape[1]) + ' columns.')
         st.dataframe(df)
     
-    elif st.button("Telephones data"):
+    elif add_button_with_image("Telephones data", "images/phones_image.webp"):
         df = scrape_all_bs(pages_indexes, url_phones)
         st.subheader('Display data dimension')
         st.write('Data dimension: ' + str(df.shape[0]) + ' rows and ' + str(df.shape[1]) + ' columns.')
         st.dataframe(df)
     
-    elif st.button("Cinema data"):
+    elif add_button_with_image("Cinema data", "images/tv.jpg"):
         df = scrape_all_bs(pages_indexes, url_cinema)
         st.subheader('Display data dimension')
         st.write('Data dimension: ' + str(df.shape[0]) + ' rows and ' + str(df.shape[1]) + ' columns.')
