@@ -35,17 +35,19 @@ st.markdown("""
     div.stButton {text-align:center}
     </style>""", unsafe_allow_html=True)
 
+proxy_addresses = {
+    'http': 'http://72.206.181.123:4145',
+    'https': 'http://191.96.100.33:3128'
+}
+
 def scrape_all_bs(pages_nb, link):
     # Generalize the scraping over all pages
     data = []
     
     for page in range(1, pages_nb + 1):
-        headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)',
-        'Accept-Language': 'en-US,en;q=0.9',
-        }
         
         url = f"{link}?page={page}"
-        res = get(url, headers=headers)
+        res = get(url, proxies=proxy_addresses)
         
         if res.status_code != 200:
             st.write(f"Erreur sur la page {page}: Code HTTP {res.status_code}")
