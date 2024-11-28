@@ -89,9 +89,6 @@ def scrape_all_bs(pages_nb, link):
             
         # Find all containers for listings
         containers = soup.find_all("div", class_="listing-card__content")
-
-        if not containers:
-            st.write(f"Aucun conteneur trouvé sur la page {page}")
             
         for container in containers:
             try:
