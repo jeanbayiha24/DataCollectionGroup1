@@ -25,7 +25,7 @@ col1, col2, col3, col4 = st.columns([5, 5, 5, 5])
 with col1:
     st.image('images/expat_dakar_logo.png', width=150)  
 with col2:
-    st.image('images/computer_image.jpg', width=150)
+    st.image('images/computer_image.jpg', width=120)
 with col3:
     st.image('images/phones_image.webp', width=100)
 with col4:
