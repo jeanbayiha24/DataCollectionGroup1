@@ -135,7 +135,7 @@ def load_(dataframe, title, key) :
         st.write('Data dimension: ' + str(dataframe.shape[0]) + ' rows and ' + str(dataframe.shape[1]) + ' columns.')
         st.dataframe(dataframe)
 
-add_bg_from_local('images/')
+add_bg_from_local('images/pngtree-technology-data.jpg')
 
 #The conditions of the options of the sidebar
 if options=="Scrape data using BeautifulSoup":
