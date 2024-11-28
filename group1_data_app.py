@@ -79,7 +79,7 @@ def scrape_all_bs(pages_nb, link):
         request_headers = {
             'user-agent': random.choice(user_agents)
         }
-        res = get(url, proxies=proxy, timeout=5)
+        res = get(url, headers=request_headers, timeout=5)
         if res.status_code != 200:
             st.write(f"Erreur sur la page {page}: Code HTTP {res.status_code}")
             continue
