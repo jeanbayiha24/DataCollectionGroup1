@@ -65,7 +65,7 @@ def add_bg_from_local(image_file):
 #    "https": "https://D4MgFT6C9WSP:DB06xRBK1v4s_region-af_ttl-30s_session-ZDPAx4mVDWIm@superproxy.zenrows.com:1338"
 #}
 # Web scraping of Vehicles data on expat-dakar
-@st.cache_data
+@st.cache_data(show_spinner=False)
 def scrape_all_bs(pages_nb, link):
     # Generalize the scraping over all pages
     data = []
