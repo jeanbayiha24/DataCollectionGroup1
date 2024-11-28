@@ -18,7 +18,7 @@ st.markdown("""
 This app performs webscraping of data from expat-dakar over multiples pages. And we can also download scraped data from the app directly without scraping them.
 
 * **Python libraries:** base64, pandas, streamlit, requests, bs4, matplotlib
-* **Data source:** [Expat-Dakar-ordinateurs](https://www.expat-dakar.com/ordinateurs) — [Expat-Dakar-telephones](https://www.expat-dakar.com/telephones) - [Expat-Dakar-cinema](https://www.expat-dakar.com/tv-home-cinema).
+* **Data source:** [Expat-Dakar-ordinateurs](https://www.expat-dakar.com/ordinateurs) <img src='images/computer_image'>— [Expat-Dakar-telephones](https://www.expat-dakar.com/telephones) - [Expat-Dakar-cinema](https://www.expat-dakar.com/tv-home-cinema).
 """)
 st.image('images/expat_dakar_logo.png', width=150)  
 
@@ -139,39 +139,24 @@ def load_(dataframe, title, key) :
         st.subheader('Display data dimension')
         st.write('Data dimension: ' + str(dataframe.shape[0]) + ' rows and ' + str(dataframe.shape[1]) + ' columns.')
         st.dataframe(dataframe)
-
-# A function to show an image and a button
-def add_button_with_image(button_label, image_path):
-    # Create 2 columns
-    col1, col2 = st.columns([1, 3])  #Columns for image and text
-
-    # Show image in the first column
-    with col1:
-        st.image(image_path, width=50)  # Ajustez la taille de l'image ici
-
-    # Show the button in the second column
-    with col2:
-        if st.button(button_label):
-            return True
-    return False
     
 add_bg_from_local('images/pngtree-technology-data.jpg')
 
 #The conditions of the options of the sidebar
 if options=="Scrape data using BeautifulSoup":
-    if add_button_with_image("Computer data", "images/computer_image.jpg"):
+    if st.button("Computer data"):
         df = scrape_all_bs(pages_indexes, url_ordis)
         st.subheader('Display data dimension')
         st.write('Data dimension: ' + str(df.shape[0]) + ' rows and ' + str(df.shape[1]) + ' columns.')
         st.dataframe(df)
     
-    elif add_button_with_image("Telephones data", "images/phones_image.webp"):
+    elif st.button("Telephones data"):
         df = scrape_all_bs(pages_indexes, url_phones)
         st.subheader('Display data dimension')
         st.write('Data dimension: ' + str(df.shape[0]) + ' rows and ' + str(df.shape[1]) + ' columns.')
         st.dataframe(df)
     
-    elif add_button_with_image("Cinema data", "images/tv.jpg"):
+    elif st.button("Cinema data"):
         df = scrape_all_bs(pages_indexes, url_cinema)
         st.subheader('Display data dimension')
         st.write('Data dimension: ' + str(df.shape[0]) + ' rows and ' + str(df.shape[1]) + ' columns.')
