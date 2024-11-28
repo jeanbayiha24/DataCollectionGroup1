@@ -60,10 +60,10 @@ def add_bg_from_local(image_file):
     )
 
 
-proxies = {
-    "http": "http://D4MgFT6C9WSP:DB06xRBK1v4s_region-af_ttl-30s_session-ZF2nnrSU8ns4@superproxy.zenrows.com:1337",
-    "https": "https://D4MgFT6C9WSP:DB06xRBK1v4s_region-af_ttl-30s_session-ZDPAx4mVDWIm@superproxy.zenrows.com:1338"
-}
+#proxies = {
+#    "http": "http://D4MgFT6C9WSP:DB06xRBK1v4s_region-af_ttl-30s_session-ZF2nnrSU8ns4@superproxy.zenrows.com:1337",
+#    "https": "https://D4MgFT6C9WSP:DB06xRBK1v4s_region-af_ttl-30s_session-ZDPAx4mVDWIm@superproxy.zenrows.com:1338"
+#}
 # Web scraping of Vehicles data on expat-dakar
 @st.cache_data(show_spinner=False)
 def scrape_all_bs(pages_nb, link):
@@ -74,18 +74,18 @@ def scrape_all_bs(pages_nb, link):
         
         url = f"{link}?page={page}"
 
-        request_headers = {
-    'accept-language': 'en-US,en;q=0.9',
-    'content-type': 'application/json',
-    'accept-encoding': 'gzip, deflate, br',
-    'sec-ch-device-memory': '8',
-    'sec-ch-ua': '"Google Chrome";v="125", "Chromium";v="125", "Not.A/Brand";v="24"',
-    'sec-ch-ua-platform': "Windows",
-    'sec-ch-ua-platform-version': '"10.0.0"',
-    'sec-ch-viewport-width': '792',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36'
+    #    request_headers = {
+    #'accept-language': 'en-US,en;q=0.9',
+    #'content-type': 'application/json',
+    #'accept-encoding': 'gzip, deflate, br',
+    #'sec-ch-device-memory': '8',
+    #'sec-ch-ua': '"Google Chrome";v="125", "Chromium";v="125", "Not.A/Brand";v="24"',
+    #'sec-ch-ua-platform': "Windows",
+    #'sec-ch-ua-platform-version': '"10.0.0"',
+    #'sec-ch-viewport-width': '792',
+    #'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36'
         }
-        res = get(url, headers=request_headers, proxies=proxies, timeout=30, verify=False)
+        res = get(url, timeout=30, verify=False)
         if res.status_code != 200:
             st.write(f"Erreur sur la page {page}: Code HTTP {res.status_code}")
             continue
