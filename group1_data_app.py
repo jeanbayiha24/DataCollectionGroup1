@@ -212,7 +212,20 @@ elif options == "Dashboard of the data":
     plt.xticks(rotation=45, ha='right')#Rotate the names of the bars
     st.pyplot(plot2)
 
+    # We clean the column "phone_condition"
+    df_phones['phone_condition'] = df_phones['phone_condition'].str.strip()  
+    # We clean the column "brand"
+    df_phones['brand'] = df_phones['brand'].str.strip()  # Supprime les espaces
+    # We drop the NaN values
+    df_phones = df_phones.dropna(subset=['price', 'brand', 'phone_condition']) 
 
+    plot5 = plt.figure(figsize=(10, 6))
+    sns.boxplot(data=df_phones, x='phone_condition', y='price', palette='Set2')
+    plt.title("Phone prices by state", fontsize=16)
+    plt.xlabel("Phone status", fontsize=14)
+    plt.ylabel("Price (F CFA)", fontsize=14)
+    plt.grid(axis='y', linestyle='--', alpha=0.7)
+    st.pyplot(plot5)
 
     st.markdown("<h3 style='text-align: center; color: black;'>Cinema(TV) plots</h3>", unsafe_allow_html=True)
     #For the Cinema data
