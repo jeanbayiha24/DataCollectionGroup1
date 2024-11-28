@@ -191,7 +191,7 @@ elif options == "Dashboard of the data":
     # Drop the NaN values
     df_ordis = df_ordis.dropna(subset=['price', 'brand', 'computer_condition'])  
     plot4 =  plt.figure(figsize=(12, 6))
-    sns.boxplot(data=df, x='computer_condition', y='price_cleaned', palette='Set2')
+    sns.boxplot(data=df_ordis, x='computer_condition', y='price', palette='Set2')
     plt.title("Price distribution by computer status")
     plt.xlabel("Status of the computer")
     plt.ylabel("Price (F CFA)")
