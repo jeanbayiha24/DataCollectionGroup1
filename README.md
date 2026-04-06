@@ -1,4 +1,4 @@
-# 📊 GROUP 1 DATA APP
+# 📊 GROUP 1 DATA APP - Web Scraping & Analytics
 
 Application web interactive de web scraping et d'analyse de données, développée avec Streamlit.
 
