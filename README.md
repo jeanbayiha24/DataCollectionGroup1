@@ -90,3 +90,11 @@ streamlit run group1_data_app.py
 ## 4. Formulaire
 - Sélectionnez "Fill the form"
 - Accédez au questionnaire KoboToolbox intégré
+
+
+## ⚠️ Disclaimer académique 
+
+Ce projet a été réalisé dans le cadre d'un examen en classe (Groupe 1 - Data Science).  
+> Il est strictement éducatif et non commercial.  
+> Les données sont scrapées à des fins d'apprentissage uniquement.  
+> Aucune intention de nuire ou de surcharger les serveurs d'Expat-Dakar.
