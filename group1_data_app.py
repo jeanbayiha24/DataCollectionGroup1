@@ -15,20 +15,18 @@ import time
 st.markdown("<h1 style='text-align: center; color: black;'>GROUP 1 DATA APP</h1>", unsafe_allow_html=True)
 
 st.markdown("""
-This app performs webscraping of data from expat-dakar over multiples pages. And we can also download scraped data from the app directly without scraping them.
+This app performs webscraping of data from a web site over multiple pages. And we can also download scraped data from the app directly without scraping them.
 
 * **Python libraries:** base64, pandas, streamlit, requests, bs4, matplotlib
-* **Data source:** [Expat-Dakar-ordinateurs](https://www.expat-dakar.com/ordinateurs) - [Expat-Dakar-telephones](https://www.expat-dakar.com/telephones) - [Expat-Dakar-cinema](https://www.expat-dakar.com/tv-home-cinema).
+* **Data source:** [Ordinateurs](https://www.expat-dakar.com/ordinateurs) - [Telephones](https://www.expat-dakar.com/telephones) - [Cinema](https://www.expat-dakar.com/tv-home-cinema).
 """)
-col1, col2, col3, col4 = st.columns([5, 5, 5, 5])
+col1, col2, col3 = st.columns([5, 5, 5])
 
 with col1:
-    st.image('images/expat_dakar_logo.png', width=150)  
-with col2:
     st.image('images/computer_image.jpg', width=130)
-with col3:
+with col2:
     st.image('images/phones_image.webp', width=100)
-with col4:
+with col3:
     st.image('images/tv.jpg', width=100)
 
 st.sidebar.markdown(
@@ -70,13 +68,7 @@ def add_bg_from_local(image_file):
     unsafe_allow_html=True
     )
 
-#We tried to use a proxy server to enter in the expat-dakar website but it failed
-#proxies = {
-#    "http": "http://D4MgFT6C9WSP:DB06xRBK1v4s_region-af_ttl-30s_session-ZF2nnrSU8ns4@superproxy.zenrows.com:1337",
-#    "https": "https://D4MgFT6C9WSP:DB06xRBK1v4s_region-af_ttl-30s_session-ZDPAx4mVDWIm@superproxy.zenrows.com:1338"
-#}
-
-# Web scraping of Vehicles data on expat-dakar
+# Web scraping of Vehicles data 
 @st.cache_data(show_spinner=False, persist=True)
 def scrape_all_bs(pages_nb, link):
     # Generalize the scraping over all pages
@@ -85,9 +77,6 @@ def scrape_all_bs(pages_nb, link):
     for page in range(1, pages_nb + 1):
         
         url = f"{link}?page={page}"
-
-        #proxy = "http://7153b3ea86ef620b6b9b6f6b9271028a928e475b:premium_proxy=true@api.zenrows.com:8001"
-        #proxies = {"http": proxy, "https": proxy}
         
         
         res = get(url, verify=False)
